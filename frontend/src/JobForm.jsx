@@ -33,7 +33,7 @@ function JobForm() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/jobs", {
+      const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
         method: "POST",
         body: data
       });
