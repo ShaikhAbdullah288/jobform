@@ -15,6 +15,7 @@ const [error, setError] = useState("");
 
   }
   const [form, setForm] = useState(initialForm);
+  const fileRef = useRef()
 
 
   const handleChange = (e) => {
