@@ -100,6 +100,9 @@ const [error, setError] = useState("");
     <div className="container">
       <div className="card">
         <h2>🚀 Apply for Job</h2>
+        
+        {message && <p style={{ color: "green" }}>{message}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
