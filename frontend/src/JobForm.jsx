@@ -52,6 +52,7 @@ const [error, setError] = useState("");
     if (res.ok) {
       setMessage("✅ Application submitted successfully!");
       setForm(initialForm);
+      fileRef.current.value = "";
     } else {
       setError(data.error || "Something went wrong");
     }
@@ -131,7 +132,7 @@ const [error, setError] = useState("");
 
           <div className="form-group">
             <label>Upload Resume</label>
-            <input type="file" name="resume" onChange={handleChange} required />
+            <input ref={fileRef} type="file" name="resume" onChange={handleChange} required />
           </div>
 
           <button type="submit">Submit Application</button>
