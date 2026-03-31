@@ -51,16 +51,7 @@ const [error, setError] = useState("");
 
     if (res.ok) {
       setMessage("✅ Application submitted successfully!");
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        role: "frontend",
-        coverLetter: "",
-         resume: null
-        
-      });
-      fileRef.current.value = "";
+      setForm(initialForm);
     } else {
       setError(data.error || "Something went wrong");
     }
