@@ -15,7 +15,6 @@ const [error, setError] = useState("");
 
   }
   const [form, setForm] = useState(initialForm);
-  const fileRef = useRef()
 
 
   const handleChange = (e) => {
@@ -58,6 +57,7 @@ const [error, setError] = useState("");
         phone: "",
         role: "frontend",
         coverLetter: "",
+         resume: null
         
       });
       fileRef.current.value = "";
@@ -140,7 +140,7 @@ const [error, setError] = useState("");
 
           <div className="form-group">
             <label>Upload Resume</label>
-            <input ref={fileRef} type="file" name="resume" onChange={handleChange} required />
+            <input  type="file" name="resume" onChange={handleChange} required />
           </div>
 
           <button type="submit">Submit Application</button>
