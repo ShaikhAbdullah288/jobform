@@ -58,8 +58,9 @@ const [error, setError] = useState("");
         phone: "",
         role: "frontend",
         coverLetter: "",
-        resume: null
+        
       });
+      fileRef.current.value = "";
     } else {
       setError(data.error || "Something went wrong");
     }
