@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import "./JobForm.css";
 
 function JobForm() {
+  const [message, setMessage] = useState("");
+const [error, setError] = useState("");
+  
   const initialForm = {
     name: "",
     email: "",
@@ -24,31 +27,74 @@ function JobForm() {
     
   };
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = new FormData();
-    for (let key in form) {
-      data.append(key, form[key]);
-    }
+  setMessage("");
+  setError("");
 
-    try {
-      const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
-        method: "POST",
-        body: data
+  const formData = new FormData();
+  formData.append("name", form.name);
+  formData.append("email", form.email);
+  formData.append("phone", form.phone);
+  formData.append("role", form.role);
+  formData.append("coverLetter", form.coverLetter);
+  formData.append("resume", form.resume);
+
+  try {
+    const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setMessage("✅ Application submitted successfully!");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        role: "frontend",
+        coverLetter: "",
+        resume: null
       });
-
-      const result = await res.json();
-      alert(result.message);
-      setForm(initialForm)
-      fileRef.current.value = "";
-    } catch (err) {
-      console.error(err);
-      alert("Error submitting form");
+    } else {
+      setError(data.error || "Something went wrong");
     }
+
+  } catch (err) {
+    setError("❌ Network error. Try again.");
+  }
+};
+  
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const data = new FormData();
+  //   for (let key in form) {
+  //     data.append(key, form[key]);
+  //   }
+
+  //   try {
+  //     const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
+  //       method: "POST",
+  //       body: data
+  //     });
+
+  //     const result = await res.json();
+  //     alert(result.message);
+  //     setForm(initialForm)
+  //     fileRef.current.value = "";
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Error submitting form");
+  //   }
           
 
-  };
+  // };
 
   return (
     <div className="container">
