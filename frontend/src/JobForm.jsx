@@ -140,7 +140,7 @@ const [error, setError] = useState("");
 
           <div className="form-group">
             <label>Upload Resume</label>
-            <input value={form.resume} type="file" name="resume" onChange={handleChange} required />
+            <input type="file" name="resume" onChange={handleChange} required />
           </div>
 
           <button type="submit">Submit Application</button>
