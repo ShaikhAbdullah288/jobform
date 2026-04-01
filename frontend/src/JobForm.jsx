@@ -63,33 +63,6 @@ const [error, setError] = useState("");
   }
 };
   
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const data = new FormData();
-  //   for (let key in form) {
-  //     data.append(key, form[key]);
-  //   }
-
-  //   try {
-  //     const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
-  //       method: "POST",
-  //       body: data
-  //     });
-
-  //     const result = await res.json();
-  //     alert(result.message);
-  //     setForm(initialForm)
-  //     fileRef.current.value = "";
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("Error submitting form");
-  //   }
-          
-
-  // };
-
   return (
     <div className="container">
       <div className="card">
