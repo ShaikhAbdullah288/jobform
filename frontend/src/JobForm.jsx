@@ -40,7 +40,7 @@ const [error, setError] = useState("");
   formData.append("phone", form.phone);
   formData.append("role", form.role);
   formData.append("coverLetter", form.coverLetter);
-  formData.append("resume", form.resume);
+  formData.append("resume", form.resume, form.resume.name);
 
   try {
     const res = await fetch("https://formbackend-u4qm.onrender.com/api/jobs", {
@@ -106,7 +106,7 @@ const [error, setError] = useState("");
 
           <div className="form-group">
             <label>Upload Resume</label>
-            <input ref={fileRef} type="file" name="resume" onChange={handleChange} required />
+            <input ref={fileRef} type="file" name="resume" onChange={handleChange} accept=".pdf" required />
           </div>
 
           <button type="submit">Submit Application</button>
